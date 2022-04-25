@@ -18,8 +18,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       
-    - name: Build
-      run: dotnet build --no-restore
+ #   - name: Build
+ #     run: dotnet build --no-restore
       
     - name: Add dotnet-format problem matcher
       uses: xt0rted/dotnet-format-problem-matcher@v1
