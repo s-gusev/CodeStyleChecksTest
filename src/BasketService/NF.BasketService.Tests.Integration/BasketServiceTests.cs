@@ -27,7 +27,8 @@ namespace BasketService.Tests.Integration
             var service = new Business.BLL.BasketService(_basketRepository);
 
             string uniqueBasketKey = Guid.NewGuid().ToString();
-            service.AddItemToBasket(uniqueBasketKey, new BasketItem() {
+            service.AddItemToBasket(uniqueBasketKey, new BasketItem()
+            {
                 Name = "Test BasketItem Name",
                 Quantity = 1,
                 Price = 25m,
