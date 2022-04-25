@@ -1,0 +1,33 @@
+name: .NET
+
+on: pull_request
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Add dotnet-format problem matcher
+      uses: xt0rted/dotnet-format-problem-matcher@v1
+
+    - name: Restore dotnet tools
+      uses: xt0rted/dotnet-tool-restore@v1
+
+    - name: Run dotnet format
+      uses: xt0rted/dotnet-format@v1
+      with:
+        only-changed-files: "true"
