@@ -19,8 +19,7 @@ namespace BasketService.Business.DAL
 
         public void CreateBasket(Basket basket)
         {
-            using (var db = GetDbContext())
-            {
+            using (var db = GetDbContext()) {
                 var collection = db.GetCollection<Basket>();
                 // TODO: find better way to handle identity ids in LiteDB
                 collection.Insert(basket.Key, basket);
