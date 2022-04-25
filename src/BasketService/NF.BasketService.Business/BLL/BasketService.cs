@@ -22,19 +22,24 @@ namespace BasketService.Business.BLL
         public void AddItemToBasket(string basketKey, BasketItem basketItem)
         {
             var basket = GetByKey(basketKey);
-            if (basket != null) {
+            if (basket != null)
+            {
                 var existingItem = basket.BasketItems.SingleOrDefault(i => i.ItemId == basketItem.ItemId);
-                if (existingItem != null) {
+                if (existingItem != null)
+                {
                     existingItem.Quantity += basketItem.Quantity;
                 }
-                else {
+                else
+                {
                     basket.BasketItems.Add(basketItem);
                 }
 
                 _basketRepository.UpdateBasket(basket);
             }
-            else {
-                _basketRepository.CreateBasket(new Basket {
+            else
+            {
+                _basketRepository.CreateBasket(new Basket
+                {
                     Key = basketKey,
                     BasketItems = new List<BasketItem> { basketItem }
                 });
@@ -45,11 +50,12 @@ namespace BasketService.Business.BLL
         {
             var basket = GetByKey(basketKey);
             var existingItem = basket?.BasketItems.SingleOrDefault(i => i.ItemId == itemId);
-            if (existingItem == null) 
+            if (existingItem == null)
                 return;
 
             existingItem.Quantity -= 1;
-            if (existingItem.Quantity <= 0) {
+            if (existingItem.Quantity <= 0)
+            {
                 basket.BasketItems.Remove(existingItem);
             }
             _basketRepository.UpdateBasket(basket);
