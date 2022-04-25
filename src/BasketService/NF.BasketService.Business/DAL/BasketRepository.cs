@@ -11,7 +11,7 @@ namespace BasketService.Business.DAL
 
         public Basket GetByKey(string basketKey)
         {
-            using (var db = GetDbContext())
+            using (LiteDB.LiteDatabase db = GetDbContext())
             {
                 var collection = db.GetCollection<Basket>();
                 return collection.Query().Where(x => x.Key == basketKey).SingleOrDefault();
