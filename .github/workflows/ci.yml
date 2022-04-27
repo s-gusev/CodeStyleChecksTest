@@ -18,12 +18,8 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
-      uses: NuGet/setup-nuget@v1.0.2
-
-    - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: '5.x'
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.0.6
 
     - name: Install dotnet-format tool
       run: dotnet tool install -g dotnet-format --version 3.3.111304
