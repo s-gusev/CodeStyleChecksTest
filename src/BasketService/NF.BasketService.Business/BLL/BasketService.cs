@@ -24,7 +24,9 @@ namespace BasketService.Business.BLL
             var basket = GetByKey(basketKey);
             if (basket != null)
             {
-                var existingItem = basket.BasketItems.SingleOrDefault(i => i.ItemId == basketItem.ItemId);
+                BasketItem singleOrDefault = basket.BasketItems.SingleOrDefault(i => i.ItemId == basketItem.ItemId);
+                singleOrDefault.ImageUrl += "asdasd";
+                var existingItem = singleOrDefault;
                 if (existingItem != null)
                 {
                     existingItem.Quantity += basketItem.Quantity;
