@@ -25,7 +25,7 @@ namespace BasketService.Business.BLL
             if (basket != null)
             {
                 BasketItem singleOrDefault = basket.BasketItems.SingleOrDefault(i => i.ItemId == basketItem.ItemId);
-                singleOrDefault.ImageUrl += "asdasd";
+                singleOrDefault.ImageUrl = singleOrDefault.ImageUrl + "asdasd";
                 var existingItem = singleOrDefault;
                 if (existingItem != null)
                 {
