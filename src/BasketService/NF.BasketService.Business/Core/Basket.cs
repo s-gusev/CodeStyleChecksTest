@@ -7,5 +7,7 @@ namespace BasketService.Business.Core
         public string Key { get; set; }
 
         public List<BasketItem> BasketItems { get; set; } = new List<BasketItem>();
+		
+		
     }
 }
